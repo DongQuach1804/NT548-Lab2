@@ -1,0 +1,8 @@
+project:
+  name: lab2-cloudformation
+  regions:
+    - us-east-1
+
+tests:
+  default:
+    template: cloudformation/template.yaml

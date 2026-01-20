@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10
+    commands:
+      - pip install cfn-lint taskcat
+
+  build:
+    commands:
+      - cfn-lint cloudformation/template.yaml
+      - taskcat test run
+
+artifacts:
+  files:
+    - '**/*'
