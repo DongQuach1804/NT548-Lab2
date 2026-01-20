@@ -45,12 +45,8 @@ jobs:
       # -----------------------
       - name: Run Checkov scan
         run: |
-          checkov -d ./Lab2/terraform \
+          checkov -d ./terraform \
             --skip-check CKV_AWS_79,CKV_AWS_126,CKV_AWS_135,CKV_AWS_8,CKV_AWS_23,CKV_AWS_130,CKV2_AWS_5,CKV2_AWS_12,CKV2_AWS_11,CKV2_AWS_41,CKV2_AWS_19,CKV_AWS_24
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
 
       # -----------------------
       # Setup Terraform
@@ -65,14 +61,14 @@ jobs:
       # -----------------------
       - name: Terraform Init
         run: terraform init
-        working-directory: ./Lab2/terraform
+        working-directory: ./terraform
 
       # -----------------------
       # Terraform Plan
       # -----------------------
       - name: Terraform Plan
         run: terraform plan
-        working-directory: ./Lab2/terraform
+        working-directory: ./terraform
 
       # -----------------------
       # Terraform Apply (only on push)
@@ -80,4 +76,4 @@ jobs:
       - name: Terraform Apply
         if: github.event_name == 'push'
         run: terraform apply -auto-approve
-        working-directory: ./Lab2/terraform
+        working-directory: ./terraform
