@@ -1,7 +1,39 @@
-variable "ami_id" {}
-variable "instance_type" {}
-variable "key_name" {}
-variable "public_subnet_id" {}
-variable "private_subnet_id" {}
-variable "public_sg_id" {}
-variable "private_sg_id" {}
+variable "ami_id" {
+  description = "AMI ID from SSM parameter"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+}
+
+variable "key_name" {
+  description = "SSH key pair name"
+  type        = string
+}
+
+variable "public_subnet_id" {
+  description = "Public subnet ID"
+  type        = string
+}
+
+variable "private_subnet_id" {
+  description = "Private subnet ID"
+  type        = string
+}
+
+variable "public_sg_id" {
+  description = "Public security group ID"
+  type        = string
+}
+
+variable "private_sg_id" {
+  description = "Private security group ID"
+  type        = string
+}
+
+variable "iam_instance_profile" {
+  description = "IAM instance profile name for EC2 instances"
+  type        = string
+}
