@@ -32,8 +32,3 @@ variable "private_sg_id" {
   description = "Private security group ID"
   type        = string
 }
-
-variable "iam_instance_profile" {
-  description = "IAM instance profile name for EC2 instances"
-  type        = string
-}

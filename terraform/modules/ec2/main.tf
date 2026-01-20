@@ -3,14 +3,15 @@ data "aws_ssm_parameter" "amazon_linux" {
 }
 
 resource "aws_instance" "public" {
-  ami                    = data.aws_ssm_parameter.amazon_linux.value
+  #checkov:skip=CKV2_AWS_41: IAM role cannot be created due to AWS Lab restrictions
+  ami                    = data.aws_ssm_parameter. amazon_linux.value
   instance_type          = var.instance_type
   subnet_id              = var.public_subnet_id
   vpc_security_group_ids = [var.public_sg_id]
-  key_name               = var.key_name
+  key_name               = var. key_name
   ebs_optimized          = true
   monitoring             = true
-  iam_instance_profile   = var.iam_instance_profile
+  associate_public_ip_address = true
 
   metadata_options {
     http_endpoint = "enabled"
@@ -27,14 +28,14 @@ resource "aws_instance" "public" {
 }
 
 resource "aws_instance" "private" {
+  #checkov: skip=CKV2_AWS_41:IAM role cannot be created due to AWS Lab restrictions
   ami                    = data.aws_ssm_parameter.amazon_linux.value
   instance_type          = var.instance_type
-  subnet_id              = var. private_subnet_id
+  subnet_id              = var.private_subnet_id
   key_name               = var.key_name
   vpc_security_group_ids = [var.private_sg_id]
   ebs_optimized          = true
   monitoring             = true
-  iam_instance_profile   = var. iam_instance_profile
 
   metadata_options {
     http_endpoint = "enabled"
