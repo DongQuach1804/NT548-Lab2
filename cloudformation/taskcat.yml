@@ -1,8 +1,10 @@
 project:
-  name: lab2-cloudformation
+  name: nt548-lab2
   regions:
     - us-east-1
 
 tests:
   default:
-    template: cloudformation/template.yaml
+    template: template.yaml
+    parameters:
+      VpcCidr: 10.0.0.0/16
