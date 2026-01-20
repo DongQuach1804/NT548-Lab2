@@ -27,8 +27,10 @@ variable "instance_type" {
 
 variable "key_name" {
   type = string
+  description = "EC2 Key Pair name"
 }
 
 variable "my_ip" {
   type = string
+  description = "Your IP address for SSH access"
 }
